@@ -1,0 +1,55 @@
+1. *What is Maven?*
+   - *Answer:* Maven is a build automation and project management tool for Java projects.
+ It uses an XML file (pom.xml) to manage project dependencies, build configurations, and project information.
+========================================================================================================================================================================
+2. *What is the pom.xml file in Maven?*
+   - *Answer:* The pom.xml (Project Object Model) file is the core configuration file in Maven.
+It contains information about the project such as dependencies, plugins, goals, and other configurations necessary for building and managing the project.
+========================================================================================================================================================================
+
+3. *What are Maven phases and goals?*
+   - *Answer:* Maven phases are steps in the build lifecycle, such as compile, test, and package. Goals are specific tasks bound to phases, such as clean:clean or compile:compile. A phase can execute multiple goals.
+========================================================================================================================================================================
+4. *What is a Maven repository?*
+   - *Answer:* A Maven repository is a location where Maven stores and retrieves project dependencies and artifacts.
+There are local repositories (on the developer’s machine), remote repositories (e.g., Maven Central), and company-specific repositories.
+========================================================================================================================================================================
+5. *How do you add a dependency in Maven?*
+   - *Answer:* Dependencies are added in the pom.xml file under the <dependencies> tag. For example:
+     xml
+     <dependency>
+         <groupId>com.example</groupId>
+         <artifactId>example-artifact</artifactId>
+         <version>1.0.0</version>
+     </dependency>
+     
+=========================================================================================================================================================================
+6. *What is a Maven profile?*
+   - *Answer:* A Maven profile is a set of configuration values that can be used to customize the build process for different environments or scenarios.
+Profiles are defined in the pom.xml file or in external files and can be activated based on various criteria.
+=========================================================================================================================================================================
+
+7. *What is the difference between compile, provided, and runtime scopes in Maven dependencies?*
+   - *Answer:* 
+     - compile: The dependency is required for all phases of the project.
+     - provided: The dependency is needed at compile time but should be provided by the runtime environment.
+     - runtime: The dependency is not needed for compilation but is required during the execution of the application.
+=========================================================================================================================================================================
+
+8. *How do you run Maven in a specific environment?*
+   - *Answer:* You can use Maven profiles to set up different environments.
+ For example, you can define a profile for a testing environment in the pom.xml file and activate it using the -P flag:
+     
+     mvn clean install -Ptest
+     
+==========================================================================================================================================================================
+
+9. *What is the mvn clean command used for?*
+   - *Answer:* The mvn clean command is used to remove the target directory and all its contents. 
+It is typically used to ensure a clean build by deleting all previously compiled files and artifacts.
+==========================================================================================================================================================================
+
+10. *How do you integrate Maven with CI/CD pipelines?*
+    - *Answer:* Maven can be integrated with CI/CD tools like Jenkins, GitLab CI, and others by configuring build jobs to execute Maven commands. 
+For example, in Jenkins, you can use the Maven plugin to run goals like mvn clean install during the build process.
+
