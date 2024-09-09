@@ -1,1 +1,166 @@
+### 1. *What is Git?*
+   *Answer*:  
+Git is a distributed version control system that helps developers manage and track changes in their source code during development.
+It allows multiple developers to collaborate on projects without overwriting each other's work.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 2. *What is GitHub?*
+   *Answer*:  
+   GitHub is a cloud-based hosting service for managing Git repositories.
+It provides a platform for collaboration and sharing Git repositories over the internet.
+GitHub also offers additional features such as pull requests, issue tracking, and continuous integration.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 3. *What is the difference between Git and GitHub?*
+   *Answer*:  
+   Git is a version control system that runs locally on your machine, while GitHub is a cloud-based platform that hosts Git repositories and facilitates collaboration.
+Git can work independently of GitHub, but GitHub requires Git to function.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 4. *What is a Git repository?*
+   *Answer*:  
+   A Git repository is a storage location for your project’s files and the full history of changes made to those files. 
+It contains all the versions of a project, enabling version control and collaboration.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 5. *What is a fork in GitHub?*
+   *Answer*:  
+   A fork is a copy of a repository that allows you to freely experiment with changes without affecting the original project.
+Once you’ve made your changes, you can submit a pull request to propose that your changes be merged back into the original repository.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 6. *What is the difference between git fetch and git pull?*
+   *Answer*:  
+   - *git fetch* retrieves updates from a remote repository but does not automatically merge them into your current branch. It only downloads the data.
+   - *git pull* is a combination of git fetch and git merge. It downloads the updates and immediately merges them into the current branch.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 7. *What is a commit in Git?*
+   *Answer*:  
+   A commit is a record of changes made to the repository. 
+It takes a snapshot of the project's files at a certain point in time and allows you to revisit that state later.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 8. *What is a branch in Git?*
+   *Answer*:  
+   A branch is a pointer to a specific commit in Git. 
+It allows you to work on different features or fixes independently without affecting the main codebase. Branches can later be merged into the main branch.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 9. *What is the command to create a new branch in Git?*
+   *Answer*:  
+   The command to create a new branch is:
+   bash
+   git branch <branch_name>
+   
+   To switch to the newly created branch, use:
+   bash
+   git checkout <branch_name>
+   --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+### 10. *How do you merge branches in Git?*
+   *Answer*:  
+   To merge a branch into your current branch, use the following command:
+   bash
+   git merge <branch_name>
+   
+   This will combine the changes from the specified branch into your current branch.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 11. *What is a pull request in GitHub?*
+   *Answer*:  
+   A pull request is a way of proposing changes to a repository. 
+When you create a pull request, you're asking the repository maintainers to review and merge your changes into the main branch.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 12. *How do you resolve merge conflicts in Git?*
+   *Answer*:  
+   Merge conflicts occur when changes from two branches clash. To resolve a conflict:
+   - Open the file containing the conflict and manually edit the conflicting sections.
+   - After resolving the conflicts, use the following commands:
+     bash
+     git add <file_name>
+     git commit
+     
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 13. *What is git stash?*
+   *Answer*:  
+   git stash temporarily stores changes you've made but don’t want to commit yet.
+It allows you to switch branches without committing uncompleted work. 
+You can later retrieve the stashed changes using:
+   bash
+   git stash apply
+   
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 14. *What is the purpose of git rebase?*
+   *Answer*:  
+   git rebase is used to reapply commits on top of another base tip.
+It is an alternative to merging and helps to maintain a cleaner project history by avoiding merge commits.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 15. *What is the use of .gitignore?*
+   *Answer*:  
+   The .gitignore file tells Git which files or directories to ignore in a project. Files specified in .gitignore will not be tracked or committed to the repository.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 16. *What is git cherry-pick?*
+   *Answer*:  
+   git cherry-pick applies a specific commit from one branch to another. This is useful when you only want to apply certain changes rather than merging entire branches.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 17. *What is git clone?*
+   *Answer*:  
+   git clone is used to create a copy of an existing Git repository. It downloads the entire repository, including its history, to your local machine:
+   bash
+   git clone <repository_url>
+   
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 18. *What is git reset?*
+   *Answer*:  
+   git reset is used to undo changes. 
+It can move the HEAD of the repository back to a specific commit, unstage files, or even delete changes from the working directory.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 19. *How do you undo a commit in Git?*
+   *Answer*:  
+   To undo a commit, you can use git revert or git reset:
+   - *git revert <commit_hash>*: Creates a new commit that undoes the changes made by the specified commit.
+   - *git reset --hard <commit_hash>*: Moves the HEAD pointer back to the specified commit, removing all commits after it.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 20. *What is git fork?*
+   *Answer*:  
+   In GitHub, forking is copying someone else’s repository to your GitHub account.
+This allows you to make changes without affecting the original repository, and you can submit a pull request later to contribute your changes back to the original project.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### Basic Git Workflow:
+
+1. *Working Directory*: This is where you modify your files. It represents your current working project.
+   
+2. *Staging Area (Index)*: Before committing changes, you add them to the staging area using git add. This marks the changes that you want to include in your next commit.
+
+3. *Repository (Local)*: After staging changes, you commit them using git commit. The commit saves your snapshot in the local repository.
+
+4. *Remote Repository*: You push your committed changes to the remote repository using git push, where other collaborators can access them.
+
+### Git Commands in the Workflow:
+- git clone: Clone a repository to your local machine.
+- git status: Check the status of your working directory.
+- git add: Add changes to the staging area.
+- git commit: Commit changes from the staging area to the local repository.
+- git push: Push your changes from the local repository to the remote repository.
+- git pull: Fetch and merge changes from the remote repository to your local repository.
+
+### Diagram:
+
+plaintext
++------------------------+         +-----------------------+
+| Working Directory      |         |  Remote Repository    |
+| (Modified Files)       |         | (GitHub, GitLab, etc.) |
++------------------------+         +-----------------------+
+            |
+            | `git add`
+            v
++------------------------+
+| Staging Area (Index)   |
+| (Selected Changes)     |
++------------------------+
+            |
+            | `git commit`
+            v
++------------------------+
+| Local Repository       |
+| (Committed History)    |
++------------------------+
+            |
+            | `git push`
+            v
++------------------------+
+| Remote Repository      |
+| (Shared Changes)       |
++------------------------+
