@@ -1,0 +1,68 @@
+1. *What is a shell script?*
+   - A shell script is a file containing a series of commands that are executed by the shell, typically used to automate tasks.
+It is often written in bash (Bourne Again SHell), but can also be written in other shell languages like sh, ksh, or zsh.
+========================================================================================================================================================================
+2. *How do you make a shell script executable?*
+   - To make a shell script executable, you need to set the execute permission using the chmod command. For example:
+     bash
+     chmod +x script.sh
+
+========================================================================================================================================================================     
+
+3. *What is the difference between = and == in shell scripting?*
+   - In shell scripting (specifically bash), = is used for string comparison in [ and [[ test constructs. == can also be used in [[ for string comparison but is not supported in [. 
+For numeric comparisons, -eq, -ne, -lt, -le, -gt, and -ge are used.
+
+==========================================================================================================================================================================
+4. *How do you pass arguments to a shell script?*
+   - Arguments are passed to a shell script using $1, $2, $3, etc., where $1 refers to the first argument, $2 to the second, and so on.
+$# gives the number of arguments, and $@ or $* represents all arguments.
+
+   Example:
+   bash
+   # script.sh
+   echo "First argument: $1"
+   echo "Second argument: $2"
+   
+========================================================================================================================================================================
+5. *How do you handle errors in a shell script?*
+   - You can handle errors by checking the exit status of commands using $?. If a command fails (returns a non-zero exit status),
+ you can handle it with conditional statements.
+ For example:
+     bash
+     command
+     if [ $? -ne 0 ]; then
+       echo "Command failed"
+     fi
+     
+============================================================================================================================================================================
+6. *What is the purpose of set -e in a shell script?*
+   - The set -e command makes the script exit immediately if a command exits with a non-zero status.
+ This helps in catching errors early and preventing the script from continuing execution in an erroneous state.
+=============================================================================================================================================================================
+7. *How can you read user input in a shell script?*
+   - You can use the read command to get input from the user. For example:
+     bash
+     read -p "Enter your name: " name
+     echo "Hello, $name!"
+     
+=============================================================================================================================================================================
+8. *How do you iterate over a list of files in a directory?*
+   - You can use a for loop to iterate over files. For example:
+     bash
+     for file in /path/to/directory/*; do
+       echo "Processing $file"
+     done
+     
+==============================================================================================================================================================================
+9. *What is the use of grep in shell scripting?*
+   - grep is used to search for text within files or output. It can filter lines that match a specific pattern. For example:
+     bash
+     grep "pattern" file.txt
+     
+===============================================================================================================================================================================
+10. *How do you redirect output and error streams in shell scripting?*
+    - You can redirect standard output (stdout) and standard error (stderr) using >, >>, and 2>. For example:
+      bash
+      command > output.txt 2> error.txt   # Redirect stdout to output.txt and stderr to error.txt
+      command >> output.txt 2>&1          # Append both stdout and stderr to output.txt
