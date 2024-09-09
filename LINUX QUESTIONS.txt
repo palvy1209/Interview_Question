@@ -1,0 +1,167 @@
+*1. What is the purpose of the chmod command?*  
+The chmod command in Linux is used to change the file permissions for a file or directory. 
+It allows the user to set read (r), write (w), and execute (x) permissions. 
+You can use symbolic (e.g., chmod u+x file) or numeric mode (e.g., chmod 755 file) to set permissions.
+
+========================================================================================================================================================================
+*2. Explain the difference between a symbolic link and a hard link.*  
+- A *symbolic (soft) link* is a pointer to another file, meaning it references the file by name.
+ Deleting the original file makes the symbolic link broken.  
+- A *hard link* is a direct reference to the file's inode,
+ so even if the original file is deleted, the hard link still provides access to the file's data as long as there is at least one hard link.
+
+=======================================================================================================================================================================
+*3. How do you check the disk space in Linux?*  
+You can check disk space using the df command. 
+For example, df -h shows the disk space usage in a human-readable format. 
+The du command can be used to check the size of directories and files, e.g., du -sh /directory.
+
+=====================================================================================================================================================================
+*4. What is the difference between cron and at in Linux?*  
+- cron is a daemon used to schedule recurring tasks (e.g., daily, weekly).  
+- at is used to schedule a one-time task for a specific time in the future.
+
+=======================================================================================================================================================================
+*5. What is the difference between kill, killall, and pkill?*  
+- kill sends a signal to a specific process by its PID.  
+- killall sends a signal to all processes with a given name.  
+- pkill allows you to send a signal to processes based on name and other attributes (e.g., user, group).
+
+==========================================================================================================================================================================
+*6. How can you monitor system resource usage in Linux?*  
+- Use the top or htop command to monitor CPU and memory usage in real time.  
+- The free command shows memory usage.  
+- The iostat command monitors disk I/O, and vmstat shows overall system performance.
+
+=======================================================================================================================================================================
+*7. Explain the difference between find and grep.*  
+- find is used to search for files and directories in a directory hierarchy based on conditions like name, size, and date modified.  
+- grep is used to search within files for specific patterns or strings.
+
+=======================================================================================================================================================================
+*8. What are inodes in Linux?*  
+An inode in Linux is a data structure that contains metadata about a file or directory, 
+such as its size, owner, permissions, and pointers to the data blocks on the disk where the file's content is stored.
+
+=======================================================================================================================================================================
+*9. How do you check running processes in Linux?*  
+The ps command shows the currently running processes.
+You can use ps aux to get detailed information, or top/htop for real-time monitoring.
+
+==========================================================================================================================================================================
+*10. What is a shebang (#!) in Linux shell scripts?*  
+A shebang (#!) is used at the beginning of a shell script to specify the interpreter that should be used to execute the script.
+ For example, #!/bin/bash tells the system to use the Bash shell to run the script.
+
+========================================================================================================================================================================
+*11. How can you view and clear the logs in Linux?*  
+- Use cat, less, or tail to view log files. For example, tail -f /var/log/syslog shows real-time system logs.  
+- To clear a log file, you can truncate it using > /var/log/syslog.
+
+========================================================================================================================================================================
+*12. What is a swap space in Linux, and how is it used?*  
+Swap space is a portion of the hard drive used when the system's RAM is full.
+It helps in memory management by moving inactive pages from RAM to disk when the system is running low on memory.
+
+=========================================================================================================================================================================
+*13. How do you check the system uptime?*  
+You can use the uptime command, which displays how long the system has been running, along with load averages.
+========================================================================================================================================================================
+*14. How do you create a user in Linux?*  
+You can create a user using the useradd or adduser command. For example, sudo useradd username will create a new user.
+========================================================================================================================================================================
+*15. What is SELinux, and why is it important?*  
+SELinux (Security-Enhanced Linux) is a security module in Linux that provides mandatory access control. 
+It allows fine-grained control over what processes and users can do on a system, improving security by preventing unauthorized access.
+========================================================================================================================================================================
+*16. What is the purpose of the /etc/fstab file in Linux?*  
+The /etc/fstab file contains information about disk drives and partitions that should be automatically mounted at boot time. It defines the file systems that need to be mounted, the mount points, and options like read-only, read-write, and specific file system parameters.
+========================================================================================================================================================================
+*17. How do you find large files on a Linux system?*  
+You can use the find command to search for large files. For example, the following command lists all files larger than 1GB in the / directory:
+------------------------
+find / -type f -size +1G |
+------------------------
+
+Alternatively, you can use du (disk usage) to find large directories:
+--------------------------------
+du -h / | sort -rh | head -n 10 |
+--------------------------------
+========================================================================================================================================================================
+*18. Explain the nohup command and when you would use it.*  
+The nohup (no hangup) command allows you to run a process in the background and ensures that the process continues running even after you log out or close the terminal. For example:
+------------------------
+nohup ./my_script.sh &  |
+------------------------
+This is useful for long-running scripts or processes you want to leave running without supervision.
+
+========================================================================================================================================================================
+*19. How do you manage services in Linux using systemctl?*  
+systemctl is the systemd service manager in modern Linux distributions. Common commands include:
+- Start a service: sudo systemctl start service_name
+- Stop a service: sudo systemctl stop service_name
+- Restart a service: sudo systemctl restart service_name
+- Enable a service at boot: sudo systemctl enable service_name
+- Check service status: sudo systemctl status service_name
+
+========================================================================================================================================================================
+*20. What is the difference between df and du commands?*  
+- df (disk free) shows the disk space usage of entire filesystems. For example, df -h displays disk usage in a human-readable format.  
+- du (disk usage) shows the disk usage of individual files and directories. For example, du -sh /home will show the total size of the /home directory.
+
+========================================================================================================================================================================
+*21. How would you find which process is using a specific port?*  
+You can use the netstat or ss command to find which process is using a specific port:
+------------------------------------
+sudo netstat -tuln | grep :<port>   |
+------------------------------------
+Or using ss:
+----------------------------------
+sudo ss -tuln | grep :<port>      |
+----------------------------------
+Alternatively, the lsof (list open files) command can be used:
+-----------------------
+sudo lsof -i :<port>   |
+------------------------
+==========================================================================================================================================================================
+*22. What is niceness in Linux, and how does it affect process scheduling?*  
+Niceness is a value that affects a process's priority for CPU scheduling.
+It ranges from -20 (highest priority) to +19 (lowest priority).
+You can change a process’s niceness using the nice or renice command. 
+A lower niceness value means higher priority, allowing a process to receive more CPU time.
+
+- To start a command with a nice value of 10:
+--------------------
+nice -n 10 command  |
+--------------------
+
+- To change the nice value of a running process:
+---------------------
+renice 10 -p <PID>   |
+---------------------
+=========================================================================================================================================================================
+*23. How do you check memory usage in Linux?*  
+The free command provides memory usage information. 
+For example, free -h shows total, used, and available memory in a human-readable format. 
+The top or htop command also provides real-time memory usage, including process-specific memory consumption.
+
+========================================================================================================================================================================
+*24. What is the difference between TCP and UDP?*  
+- *TCP (Transmission Control Protocol)* is a connection-oriented protocol that ensures reliable, ordered, and error-checked delivery of data between applications. It is used when reliability is more important than speed (e.g., HTTP, FTP).  
+- *UDP (User Datagram Protocol)* is a connectionless protocol that sends data without guaranteeing delivery or order.
+ It is used in cases where speed is more important than reliability (e.g., video streaming, VoIP).
+
+=========================================================================================================================================================================
+*25. How do you permanently set environment variables in Linux?*  
+Environment variables can be permanently set by adding them to files such as .bashrc, .bash_profile, or /etc/environment (for global variables). For example, to set JAVA_HOME permanently for a user, you would add the following to the .bashrc file:
+----------------------------------
+export JAVA_HOME=/path/to/java    |
+----------------------------------
+After making the change, use source ~/.bashrc to apply the change.
+
+===========================================================================================================================================================================
+*26. How do you compress and extract files in Linux?*  
+- To create a .tar.gz file (compressed archive), use:
+------------------------------------------
+tar -czvf archive.tar.gz /path/to/files    |
+------------------------------------------
