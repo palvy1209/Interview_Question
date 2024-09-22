@@ -1,0 +1,78 @@
+When I'm Handling merck project 
+In merck we are we are setup a cicd pipline to automate the build, test and deployment of microservices based application.
+### Step 1: Integrating Jenkins with Version Control (GitHub)
+ ---- Task: Set up Jenkins to automatically trigger builds whenever there was a new commit in the GitHub repository.
+          - *Action:*  
+     I configured Jenkins to use the GitHub plugin and set up a webhook that would notify Jenkins every time a developer pushed new code to the GitHub repository. 
+    This enabled Jenkins to automatically pull the latest code and initiate the build process.
+
+          Example response:  
+   "I set up a webhook in GitHub that triggers the Jenkins pipeline whenever new code is pushed. 
+This ensures that the latest code is automatically pulled and built, reducing manual effort and speeding up the release cycle."
+
+### Step 2: *Building the Docker Image*
+   ---- *Task:* Use Docker to create images for the microservices, which would be deployed later in the pipeline.
+            - *Action:*  
+     I wrote a Dockerfile for each microservice, specifying the base image, dependencies, and the application's entry point.
+    Jenkins was configured to use these `Dockerfile`s to build Docker images for the different microservices.
+
+             Example response:  
+   "For each microservice, I created a Dockerfile that defined the base image (like node:14-alpine for a Node.js service), installed the necessary dependencies,
+and set the command to run the application. Jenkins built Docker images based on these `Dockerfile`s, ensuring consistency across all environments."
+
+
+### Step 3: *Running Unit Tests During the Build*
+     ---- *Task:* Integrate unit tests into the Jenkins pipeline to ensure code quality.
+             - *Action:*  
+     I added a step in the Jenkins pipeline to run unit tests before creating the Docker images. 
+This helped catch bugs early in the pipeline and prevented broken code from being deployed to production.
+
+    Example response:  
+   "I included a step in the Jenkins pipeline to run automated unit tests using frameworks like Jest or JUnit.
+   If any tests failed, the pipeline would stop, and Jenkins would notify the team of the issue, allowing us to fix the problem before moving forward."
+
+
+### Step 4: *Pushing Docker Images to a Repository*
+  ---- *Task:* Push the Docker images to a container registry (e.g., DockerHub or AWS ECR) for easy deployment.
+    - *Action:*  
+     Once the Docker images were successfully built, Jenkins pushed them to a centralized repository (like DockerHub or AWS Elastic Container Registry).
+This ensured that the images were versioned and accessible for deployment in different environments (staging, production, etc.).
+   
+   Example response:  
+   "After building the Docker images, Jenkins automatically pushed them to DockerHub (or AWS ECR) using version tags.
+This ensured we had a history of each image version, which made it easy to deploy and rollback if necessary."
+
+### Step 5: *Deploying to AWS (or Azure) using Docker*
+---- *Task:* Deploy the Docker containers to the cloud (AWS in this case).
+   - *Action:*  
+     I set up Jenkins to deploy the Docker containers to AWS EC2 instances using AWS ECS (Elastic Container Service) or by directly running Docker on EC2.
+    Jenkins connected to the AWS environment and executed the deployment automatically.
+   
+   Example response:  
+   "We used AWS ECS to manage and deploy Docker containers. 
+   Jenkins was configured to trigger a deployment to ECS after a successful build and testing process. 
+   This deployment would automatically roll out the new version of the microservices, ensuring the latest code was in production."
+
+### Step 6: *Post-Deployment Monitoring and Feedback*
+  ----*Task:* Monitor the system after deployment to ensure that everything was running smoothly.
+   - *Action:*  
+     After deploying the application, I set up monitoring using AWS CloudWatch and Jenkins' built-in monitoring plugins to track system health.
+In case of errors, Jenkins would automatically trigger a rollback or send alerts to the team.
+
+     Example response:  
+   "Once the deployment was complete, we used AWS CloudWatch to monitor the performance of the services. 
+  I configured Jenkins to receive feedback on application health, and in case of any issues, Jenkins would trigger an alert or a rollback to the previous stable version."
+
+
+
+
+
+
+
+
+
+
+
+
+     
+    
