@@ -1,0 +1,51 @@
+1. What is docker?
+Answer) docker is a open source containzation platform. It is used to manage lifecycle of the container.
+==============================================================================================================================================================================================================
+2. How container diffrent form virtual machine?
+Answer) container is very light weight in nature because they don't have complete operating system but they have very minimal dependency that have to run system application . (application+system liberaies)
+        Virtual machine : it contain complete os which consume more storage. and used fixed (RAM + ROM) if we less required remain are waiste. SO here waistege of memory.
+===============================================================================================================================================================================================================
+3. What is docker lifecycle?
+  Answer) In My case what i usually do is writing a docker file in the docker file i will write the set of instructuion that required run the application and once docker file is complete. through docker deman
+          I create a docker image to convert docker file to docker image i write docker build command and this command is written in our cli and send to docker deman. After that we can use docker run command 
+          to execute the docker image. Finally when docker conatiner run we can put docker image in dockerhub or eks.
+================================================================================================================================================================================================================
+4. What are the docker diffrent component?
+  Answer) when we install docker we have various component like docker client, dockerhost, docker repository. when we install docker we install docker deman/docker host
+          docker client: client is nothing but a cli through cli we send request to docker host like as a user we have right docker build command 
+================================================================================================================================================================================================================
+5. What is the diffrent between the docker COPY an docker ADD?
+  Answer) Docker ADD can copy the files from the url
+          Docker COPY which can konly copy files from the host system to the container
+=================================================================================================================================================================================================================
+6. What is the diffrent between CMD and Entrepoint in docker ?
+  Answer) CMD: Specifies the default command that runs when the conatiner starts, but it can be override by passing a command when running the conatainer.
+          ENTRYPOINT: Define a fixed command that will always run, and it can't be overridden when you pass argument. Instead, any argument passed to docker run
+             are appended to the ENTRYPOINT.
+==============================================================================================================================================================================================
+7. What are the networking type of docker and what is the default?
+  Answer) The dafult networking type is Bridge networking
+          however you can change the default type and configuration one of them: overlay and host.
+==================================================================================================================================================================================================
+8. Can you explain the how to isolate networking between the conatiner?
+  Answer) you can creating your own bridge networking. using your bridge networking u can assigned your own network to a secure container whenever you running a docker run command you can add --network= securenetwork
+           when you do this ocontainer with come up with secure network docker will creaed cidr subnet for you.whenever container trying to access the host it will connect to the host through
+            the secure network.
+====================================================================================================================================================================================================
+9. What is multi stage build in docker?
+  Answer) multi stage build allow you to build your docker container in multiple stages allowing you to copy artifact from one stage to other. The major advantage of this is to build light weight
+             conatiners.
+        For example: we have multi-tier application:Frontend,Middlware,backend
+                     For frontend we have dependecny with react ,node, angular,etc using pip command you will install all dependency. and again you can download dependcy with backend with java and manymore
+                     when you try to build image than you see imag size go 1GB because we have lots of dependency.but final executable just required JRE(Java Runtime Enviroment)
+                     but all the dependency you download only required the build face once the application is build all the application was not required. so what we can do we use multistage build
+                     In the last stage you can copy the binaries just take them into the final stage just install the java run time but all the packeges so we will see 1 GB come down to 200MB
+==================================================================================================================================================================================================================
+10. what is disto less image in docker?
+ Answer) Distroless images contain only your application and its run time dependency with a very minimum os libraries. They do not contain package manager shell or any other programm you would expact to find in a
+        standard linux distrubtion. they are very small and light weight  images
+=========================================================================================================
+REAL TIME CHALANGIES WITH DOCKER
+=========================================================================================================
+
+                            
