@@ -29,7 +29,7 @@ Answer) container is very light weight in nature because they don't have complet
 ==================================================================================================================================================================================================
 8. Can you explain the how to isolate networking between the conatiner?
   Answer) you can creating your own bridge networking. using your bridge networking u can assigned your own network to a secure container whenever you running a docker run command you can add --network= securenetwork
-           when you do this ocontainer with come up with secure network docker will creaed cidr subnet for you.whenever container trying to access the host it will connect to the host through
+           when you do this ocontainer with come up with secure network docker will creaed cidr subnet for you.whenever container trying to access the host it wil connect to the host through
             the secure network.
 ====================================================================================================================================================================================================
 9. What is multi stage build in docker?
@@ -47,5 +47,15 @@ Answer) container is very light weight in nature because they don't have complet
 =========================================================================================================
 REAL TIME CHALANGIES WITH DOCKER
 =========================================================================================================
-
-                            
+* Docker is a single doeman process. Which can cause a single pont of failure, IF the docker doeman goes down for some reason all the application down.
+  sol) PODMAN one such thing that doesn't have demon doesn't have a single point of failure even I'm tring to learn podman came to know that podman which address the docker problem but take docker command as it is 
+      like podman build, podman run.
+* Docker deman run as a root user. Which is security threat. Any process running as a root can have adverse effects. when it is comprised for security reason, it can impact other application or container as a host
+    Solution) Docker doeman
+Resource constraint : if you're running to many container on a single host, you may experience issue with resource constraint. if one conatiner use more resource use a lots of memory than othr conatiner
+which actually required the memory will not get the resources because it consume more resources. this may resoult in slow performance or crashes.
+=================================================================================================================================================================
+Q) what steps would you take to secure the conatiners?
+Answer) Use Distroless or images with not too much packages as your final images in multi stage build , so that there is less chanve of CVE or security issue
+* Ensure that the nework in configure properly . This is most comman reason for security issue. If required configure custom bridge network and assign them to isloate contaiers
+ USe utilites sync to scan your conatiner images
